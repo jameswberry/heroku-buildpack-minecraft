@@ -9,7 +9,7 @@
   "env": {
     "MINECRAFT_EULA": {
       "description": "Do you accept the Minecraft EULA?",
-      "value": "true"
+      "value": true
     },
     "NGROK_API_TOKEN": {
       "description": "Your personal ngrok API token",
