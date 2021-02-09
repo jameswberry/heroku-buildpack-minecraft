@@ -38,6 +38,10 @@
     "AWS_SYNC_INTERVAL": {
       "description": "The AWS sync interval for the optional S3 Bucket (in seconds)",
       "required": false
+    },
+    "MINCRAFT_PORT": {
+      "description": "Optional port number for the Minecraft Server (Defaults to 25566)",
+      "required": false
     }
   },
   "buildpacks": [

@@ -97,6 +97,14 @@ You can customize ngrok by setting the `NGROK_OPTS` config variable. For example
 
 ```
 $ heroku config:set NGROK_OPTS="--remote-addr 1.tcp.ngrok.io:25565"
+### Minecraft Port Number
+
+You can choose the Minecraft port by setting the MINECRAFT_PORT like so:
+
+```
+$ heroku config:set --app=$APP_NAME MINECRAFT_PORT="99999"
+$ git commit -m "redeploy"
+$ git push heroku master
 ```
 
 ### Minecraft
