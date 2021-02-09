@@ -57,12 +57,21 @@ First, create an [AWS account](https://aws.amazon.com/) and an S3 bucket. Then c
 and your AWS keys like this:
 
 ```
-$ heroku config:set AWS_BUCKET=your-bucket-name
-$ heroku config:set AWS_ACCESS_KEY=xxx
-$ heroku config:set AWS_SECRET_KEY=xxx
+$ echo 's3cmd' > requirements.txt
+$ git add requirements.txt
+$ heroku config:set --app=$APP_NAME AWS_BUCKET=your-bucket-name
+$ heroku config:set --app=$APP_NAME AWS_ACCESS_KEY=xxx
+$ heroku config:set --app=$APP_NAME AWS_SECRET_KEY=xxx
+$ git commit -m "S3 config redeploy"
+$ git push heroku master
 ```
 
 The buildpack will sync your world to the bucket every 60 seconds, but this is configurable by setting the `AWS_SYNC_INTERVAL` config var.
+```
+$ heroku config:set --app=$APP_NAME AWS_SYNC_INTERVAL=xxx
+$ git commit -m "S3 sync interval update redeploy"
+$ git push heroku master
+```
 
 ## Connecting to the server console
 

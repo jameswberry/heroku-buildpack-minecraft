@@ -16,15 +16,19 @@
       "required": true
     },
     "AWS_BUCKET": {
-      "description": "S3 Bucket to store your server state (you will lose your games when the server restarts if you don't do this)",
+      "description": "Optional S3 Bucket to store your server state (you will lose your games when the server restarts if you don't do this)",
       "required": false
     },
     "AWS_ACCESS_KEY": {
-      "description": "The AWS access key for the S3 Bucket",
+      "description": "The AWS access key for the optional S3 Bucket",
       "required": false
     },
     "AWS_SECRET_KEY": {
-      "description": "The AWS secret key for the S3 Bucket",
+      "description": "The AWS secret key for the optional S3 Bucket",
+      "required": false
+    },
+    "AWS_SYNC_INTERVAL": {
+      "description": "The AWS sync interval for the optional S3 Bucket (in seconds)",
       "required": false
     }
   },
