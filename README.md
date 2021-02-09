@@ -20,11 +20,12 @@ Then, install the [Heroku toolbelt](https://toolbelt.heroku.com/).
 Create a Heroku app, set your ngrok token, and push:
 
 ```sh-session
-$ heroku create
-$ heroku buildpacks:add heroku/python
-$ heroku buildpacks:add heroku/jvm
-$ heroku buildpacks:add jkutner/minecraft
-$ heroku config:set NGROK_API_TOKEN="xxxxx"
+$ APP_NAME=heroku-minecraft
+$ heroku create $APP_NAME
+$ heroku buildpacks:add --app=$APP_NAME heroku/python
+$ heroku buildpacks:add --app=$APP_NAME heroku/jvm
+$ heroku buildpacks:add --app=$APP_NAME jameswberry/minecraft
+$ heroku config:set --app=$APP_NAME NGROK_API_TOKEN="xxxxx"
 $ git push heroku master
 ```
 
