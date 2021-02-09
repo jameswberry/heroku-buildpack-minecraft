@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mc_port=${MINECRAFT_PORT:25566}
+mc_port=${MINECRAFT_PORT:-25566}
 port=${1:-${PORT:-8080}}
 
 if [ -z "$NGROK_API_TOKEN" ]; then
