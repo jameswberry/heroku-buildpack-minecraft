@@ -127,7 +127,7 @@ $ git push heroku master
 You can choose the Minecraft version by setting the MINECRAFT_VERSION like so:
 
 ```
-$ heroku config:set MINECRAFT_VERSION="1.8.3"
+$ heroku config:set MINECRAFT_VERSION="1.16.4"
 ```
 
 You can also configure the server properties by creating a `server.properties`
