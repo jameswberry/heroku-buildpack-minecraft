@@ -93,10 +93,23 @@ $ screen -r minecraft
 
 ### ngrok
 
-You can customize ngrok by setting the `NGROK_OPTS` config variable. For example:
+You can customize ngrok domain name by setting the `NGROK_APP` config variable. For example:
 
 ```
-$ heroku config:set NGROK_OPTS="--remote-addr 1.tcp.ngrok.io:25565"
+$ heroku config:set --app=$APP_NAME NGROK_ADDR="--remote-addr ${APP_NAME}.tcp.ngrok.io"
+$ git commit -m "NGROK options redeploy"
+$ git push heroku master
+```
+**NOTE** Leave the port off of `--remote-addr` as the currently configured Mincraft Port Number will be added.
+
+You can customize [additional ngrok settings](https://ngrok.com/docs) throuigh the `NGROK_OPTS` config variable. For example:
+
+```
+$ heroku config:set --app=$APP_NAME NGROK_OPTS="--subdomain ${APP_NAME}"
+$ git commit -m "NGROK options redeploy"
+$ git push heroku master
+```
+
 ### Minecraft Port Number
 
 You can choose the Minecraft port by setting the MINECRAFT_PORT like so:
