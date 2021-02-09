@@ -137,3 +137,15 @@ described on the [Minecraft Wiki](http://minecraft.gamepedia.com/Server.properti
 
 You can add files such as `banned-players.json`, `banned-ips.json`, `ops.json`,
 `whitelist.json` to your Git repository and the Minecraft server will pick them up.
+
+[//]: # ($ heroku plugins:install buildpack-registry)
+[//]: # ($ heroku buildpacks:register)
+
+[//]: # ($ heroku create --buildpack https://github.com/heroku/heroku-buildpack-testrunner)
+[//]: # ($ heroku buildpacks:set heroku/python)
+[//]: # ($ heroku buildpacks:set heroku/jvm)
+[//]: # ($ git push heroku master)
+[//]: # ($ heroku run tests)
+
+[//]: # ($ heroku buildpacks:publish jameswberry/minecraft master)
+[//]: # ($ heroku buildpacks:rollback jameswberry/minecraft)
