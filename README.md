@@ -120,7 +120,9 @@ $ git commit -m "redeploy"
 $ git push heroku master
 ```
 
-### Minecraft
+**NOTE**: Make sure to update your new port number in `server.properties'.
+
+### Minecraft Version
 
 You can choose the Minecraft version by setting the MINECRAFT_VERSION like so:
 
