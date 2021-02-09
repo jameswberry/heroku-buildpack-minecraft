@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+echo ""
+echo "----------"
+echo ""
+
 mc_port=${MINECRAFT_PORT:-25566}
 port=${1:-${PORT:-8080}}
 
@@ -15,7 +19,7 @@ eval "${ngrok_cmd} | tee ngrok.log &"
 ngrok_pid=$!
 
 # Do an inline sync first, then start the background job
-echo "Starting sync..."
+echo "Starting sync with interval [${AWS_SYNC_INTERVAL:-60}]..."
 bin/sync
 if [ "${READ_ONLY}" != "true" ]; then
   eval "while true; do sleep ${AWS_SYNC_INTERVAL:-60}; bin/sync; done &"
@@ -41,9 +45,14 @@ case $limit in
   ;;
 esac
 
-echo "Starting: minecraft ${mc_port}"
+echo "Starting: Minecraft on port ${mc_port}"
 eval "screen -L -h 2048 -dmS minecraft java -Xmx${heap} -Xms${heap} -jar minecraft.jar nogui"
 main_pid=$!
+
+echo ""
+echo "----------"
+echo ""
+
 
 # Flush the logfile every second, and ensure that the logfile exists
 screen -X "logfile 1" && sleep 1
