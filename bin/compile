@@ -66,6 +66,7 @@ unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "done"
 
 minecraft_version=${MINECRAFT_VERSION:-"${DEFAULT_MINECRAFT_VERSION}"}
+minecraft_url=""
 
 # Set the default Minecraft version if the configured version is not available.
 if ! grep -Rq "${minecraft_version}" versions.csv; then
@@ -79,8 +80,9 @@ if [ $(ver_compare "$minecraft_version") -gt $(ver_compare "1.13.1") ]; then
   while IFS=, read -r versions_num versions_url; do
     echo "VN:[${versions_num}] VU:[${versions_url}]"
     if "${versions_num}" != "Version"; then
-      if "$versions_num}" = ${MINECRAFT_VERSION}; then
+      if "${versions_num}" = "${minecraft_version}"; then
         minecraft_url="${versions_url}"
+        echo "MU: [${versions_url}]"
       fi
     fi
   done < versions.csv
