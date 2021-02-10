@@ -82,6 +82,7 @@ if [ $(ver_compare "$minecraft_version") -gt $(ver_compare "1.13.1") ]; then
     fi
   done < versions.csv
   # Possible empty state here
+  echo "EMPTY MINECRAFT URL: [${minecraft_url}]"
 else
   minecraft_url="https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft_version}/minecraft_server.${minecraft_version}.jar"
 fi
