@@ -55,9 +55,7 @@ echo "Starting: Minecraft on port ${mc_port}"
 eval "screen -L -h 2048 -dmS minecraft java -Xmx${heap} -Xms${heap} -jar minecraft.jar nogui"
 main_pid=$!
 
-echo ""
-echo "----------"
-echo ""
+echo "\n----------\n"
 
 
 # Flush the logfile every second, and ensure that the logfile exists
