@@ -68,7 +68,7 @@ echo "done"
 minecraft_version=${MINECRAFT_VERSION:-"${DEFAULT_MINECRAFT_VERSION}"}
 
 # Set the default Minecraft version if the configured version is not available.
-if ! grep -Rq "${minecraft_version}" $BUILD_DIR/versions.csv; then
+if ! grep -Rq "${minecraft_version}" versions.csv; then
   minecraft_version="${DEFAULT_MINECRAFT_VERSION}"
 fi
 
@@ -80,7 +80,7 @@ if [ $(ver_compare "$minecraft_version") -gt $(ver_compare "1.13.1") ]; then
         minecraft_url="$minecraft_uuid"
       fi
     fi
-  done < $BUILD_DIR/versions.csv
+  done < versions.csv
   # Possible empty state here
 else
   minecraft_url="https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft_version}/minecraft_server.${minecraft_version}.jar"
