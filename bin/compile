@@ -72,7 +72,12 @@ if ! grep -Rq "${minecraft_version}" versions.csv; then
   minecraft_version="${DEFAULT_MINECRAFT_VERSION}"
 fi
 
+echo -n "-----> Installing Minecraft ${minecraft_version}... "
+
 # Get the URL for the configured Minecraft version
+vc1=$(ver_compare "$minecraft_version")
+vc2=$(ver_compare "1.13.1")
+echo "VC1:[${vc1}] VC2:[${vc2}]"
 if [ $(ver_compare "$minecraft_version") -gt $(ver_compare "1.13.1") ]; then
   while IFS=, read -r versions_num versions_url; do
     if "${versions_num}" != "Version"; then
@@ -86,7 +91,6 @@ else
   minecraft_url="https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft_version}/minecraft_server.${minecraft_version}.jar"
 fi
 
-echo -n "-----> Installing Minecraft ${minecraft_version}... "
 curl -o minecraft.jar -s -L $minecraft_url
 mv minecraft.jar $BUILD_DIR/minecraft.jar
 echo "done"
