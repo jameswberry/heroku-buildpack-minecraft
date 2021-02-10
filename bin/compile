@@ -21,7 +21,7 @@ export_env_dir() {
 
 ver_compare() { printf "%03d%03d%03d%03d" $(echo "$1" | tr '.' ' '); }
 
-# NOTE: Make sure a corresponding URL in versions.csv
+# NOTE: Make sure a corresponding URL in versions.csv and update documentation in /opt/index.html
 DEFAULT_MINECRAFT_VERSION="1.16.1"
 
 BP_DIR="$(cd "$(dirname "$0")" && pwd)"
