@@ -5,6 +5,7 @@ echo "----------"
 echo ""
 
 mc_port=${MINECRAFT_PORT:-25566}
+echo "MC_PORT:[${mc_port}]"
 port=${1:-${PORT:-8080}}
 
 if [ -z "${NGROK_API_TOKEN}" ]; then
