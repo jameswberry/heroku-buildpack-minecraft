@@ -4,6 +4,7 @@ echo ""
 echo "----------"
 echo ""
 
+# NOTE: This is also set as a default value in app.json
 mc_port=${MINECRAFT_PORT:-25566}
 port=${1:-${PORT:-8080}}
 

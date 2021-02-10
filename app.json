@@ -15,10 +15,6 @@
       "description": "Your personal ngrok API token",
       "required": true
     },
-    "NGROK_ADDR": {
-      "description": "Optional NGROK option for '--remote-addr' (the minecraft ':xxxxx' server port will be added automatically)",
-      "required": false
-    },
     "NGROK_OPTS": {
       "description": "Optional additional NGROK options",
       "required": false
@@ -41,11 +37,13 @@
     },
     "MINCRAFT_VERSION": {
       "description": "Optional version number for the Minecraft Server (Defaults to 1.16.1)",
-      "required": false
+      "required": false,
+      "value": "1.16.5"
     },
     "MINCRAFT_PORT": {
       "description": "Optional port number for the Minecraft Server (Defaults to 25566)",
-      "required": false
+      "required": false,
+      "value": "25566"
     }
   },
   "buildpacks": [
