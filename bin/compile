@@ -78,7 +78,7 @@ echo -n "-----> Installing Minecraft ${minecraft_version}... "
 # Get the URL for the configured Minecraft version
 if [ $(ver_compare "$minecraft_version") -gt $(ver_compare "1.13.1") ]; then
   while IFS=, read -r versions_num versions_url; do
-    if "${versions_num}" == "${minecraft_version}" then
+    if "${versions_num}" -eq "${minecraft_version}"; then
       minecraft_url="${versions_url}"
       echo "MU: [${versions_url}]"
     fi
