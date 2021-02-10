@@ -66,7 +66,7 @@ unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "done"
 
 
-minecraft_version=${MINECRAFT_VERSION:-"${DEFAULT_MINECRAFT_VERSION}"}
+minecraft_version=${MINECRAFT_VERSION:-${DEFAULT_MINECRAFT_VERSION}}
 minecraft_url=""
 
 echo -n "-----> Installing Minecraft ${minecraft_version}... "
