@@ -19,6 +19,11 @@
       "description": "Optional additional NGROK options",
       "required": false
     },
+    "NGROK_PROTOCOL": {
+      "description": "Optional protocol NGROK setting: tcp, http, tls",
+      "required": false,
+      "value":"tcp"
+    },
     "AWS_BUCKET": {
       "description": "Optional S3 Bucket to store your server state (you will lose your games when the server restarts if you don't do this)",
       "required": false
