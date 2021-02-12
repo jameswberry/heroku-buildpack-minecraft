@@ -22,8 +22,8 @@ export_env_dir() {
 ver_compare() { printf "%03d%03d%03d%03d" $(echo "$1" | tr '.' ' '); }
 
 # NOTE: Make sure a corresponding URL in versions.csv and update documentation in /opt/index.html
-# This has been moved to app.json as a default ENV value
-# DEFAULT_MINECRAFT_VERSION="1.16.1"
+# NOTE: DEFAULT_MINECRAFT_VERSION is also set as a default value in app.json
+DEFAULT_MINECRAFT_VERSION="1.16.1"
 
 BP_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR=$1
@@ -67,7 +67,7 @@ unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "done"
 
 # NOTE: Make sure a corresponding URL in versions.csv and update documentation in /opt/index.html
-# NOTE: MINECRAFT_VERSION has added to app.json as a default ENV value
+# NOTE: MINECRAFT_VERSION is also set as a default value in app.json
 minecraft_version=${MINECRAFT_VERSION}
 minecraft_url=""
 # Set the default Minecraft version if the configured version is not available.
