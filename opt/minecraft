@@ -18,6 +18,7 @@ fi
 ngroc_proto=${NGROK_PROTOCOL:-"tcp"}
 ngroc_options=""
 
+echo "NAPI:[${NGROK_API_TOKEN}]"
 echo "NOPTS:[${NGROK_OPTS}]"
 echo "options:[${ngroc_options}]"
 
