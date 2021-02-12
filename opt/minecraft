@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+#########################################
 echo ""
 echo "----------"
 echo ""
@@ -23,6 +24,7 @@ echo "Starting ngrok with options [${NGROC_OPTS}] and port [${mc_port}]..."
 eval "${ngrok_cmd} | tee ngrok.log &"
 ngrok_pid=$!
 
+#########################################
 echo ""
 echo "----------"
 echo ""
@@ -54,6 +56,7 @@ case $limit in
   ;;
 esac
 
+#########################################
 echo ""
 echo "----------"
 echo ""
@@ -62,6 +65,7 @@ echo "Starting: Minecraft on port ${mc_port}"
 eval "screen -L -h 2048 -dmS minecraft java -Xmx${heap} -Xms${heap} -jar minecraft.jar nogui"
 main_pid=$!
 
+#########################################
 echo ""
 echo "----------"
 echo ""
