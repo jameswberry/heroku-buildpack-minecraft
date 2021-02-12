@@ -21,7 +21,7 @@ ngroc_options=""
 echo "NOPTS:[${NGROK_OPTS}]"
 echo "options:[${ngroc_options}]"
 
-if [ -z "${NGROK_OPTS}" ]; then
+if [ ! -z "${NGROK_OPTS}" ]; then
   ngroc_options="${NGROK_OPTS} "
 fi
 
