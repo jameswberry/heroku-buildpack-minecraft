@@ -17,6 +17,9 @@ fi
 # Start the TCP tunnel
 ngroc_proto=${NGROK_PROTOCOL:-"tcp"}
 ngroc_options=""
+
+echo "NOPTS:[${NGROK_OPTS}]"
+
 if [ -z "${NGROK_OPTS}" ]; then
   ngroc_options="${NGROK_OPTS} "
 fi
