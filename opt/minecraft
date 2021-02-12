@@ -9,20 +9,20 @@ echo ""
 mc_port=${MINECRAFT_PORT:-25566}
 port=${1:-${PORT:-8080}}
 
-if [ -z "${NGROK_API_TOKEN}" ]; then
+if [ -z ${NGROK_API_TOKEN} ]; then
   echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!"
   exit 1
 fi
 
 # Start the TCP tunnel
-ngroc_proto=${NGROK_PROTOCOL:-tcp}
-ngroc_options=${mc_port}
-if [ -z "${NGROK_OPTS}" ]; then
-  ngroc_options="${NGROK_OPTS} ${mc_port}"
+ngroc_proto=${NGROK_PROTOCOL:-"tcp"}
+ngroc_options=""
+if [ -z ${NGROK_OPTS} ]; then
+  ngroc_options="${NGROK_OPTS} "
 fi
 
-ngrok_cmd="bin/ngrok ${ngrok_proto} -authtoken ${NGROK_API_TOKEN} -log stdout --log-level debug ${ngroc_options}"
-echo "Starting ngrok with protocol [${ngrok_proto}], options [${ngroc_options}], and port [${mc_port}]..."
+ngrok_cmd="bin/ngrok ${ngrok_proto} -authtoken ${NGROK_API_TOKEN} -log stdout --log-level debug ${ngroc_options}${mc_port}"
+echo "Starting ngrok with protocol [${ngroc_proto}], options [${ngroc_options}], and port [${mc_port}]..."
 eval "${ngrok_cmd} | tee ngrok.log &"
 ngrok_pid=$!
 
@@ -34,7 +34,7 @@ echo ""
 # Do an inline sync first, then start the background job
 echo "Starting sync with interval [${AWS_SYNC_INTERVAL:-60}]..."
 bin/sync
-if [ "${READ_ONLY}" != "true" ]; then
+if [ ${READ_ONLY} != "true" ]; then
   eval "while true; do sleep ${AWS_SYNC_INTERVAL:-60}; bin/sync; done &"
   sync_pid=$!
 fi
