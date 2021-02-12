@@ -23,7 +23,7 @@ ver_compare() { printf "%03d%03d%03d%03d" $(echo "$1" | tr '.' ' '); }
 
 # NOTE: Make sure a corresponding URL in versions.csv and update documentation in /opt/index.html
 # NOTE: DEFAULT_MINECRAFT_VERSION is also set as a default value in app.json
-DEFAULT_MINECRAFT_VERSION="1.16.1"
+DEFAULT_MINECRAFT_VERSION="1.16.5"
 
 BP_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR=$1
