@@ -18,17 +18,13 @@ fi
 ngroc_proto=${NGROK_PROTOCOL:-"tcp"}
 ngroc_options=""
 
-echo "NAPI:[${NGROK_API_TOKEN}]"
-echo "NOPTS:[${NGROK_OPTS}]"
-echo "options:[${ngroc_options}]"
-
 if [ ! -z "${NGROK_OPTS}" ]; then
   ngroc_options="${NGROK_OPTS} "
 fi
 
-echo "options:[${ngroc_options}]"
-
 ngrok_cmd="bin/ngrok ${ngrok_proto} -authtoken ${NGROK_API_TOKEN} -log stdout --log-level debug ${ngroc_options}${mc_port}"
+echo "CMD:[${ngrok_cmd}]"
+
 echo "Starting ngrok with protocol [${ngroc_proto}], options [${ngroc_options}], and port [${mc_port}]..."
 eval "${ngrok_cmd} | tee ngrok.log &"
 ngrok_pid=$!
