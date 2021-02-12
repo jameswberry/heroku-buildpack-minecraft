@@ -23,8 +23,8 @@ if [ ! -z "${NGROK_OPTS}" ]; then
   ngroc_options="${NGROK_OPTS} "
 fi
 
-ngrok_cmd="bin/ngrok ${ngrok_proto} -authtoken ${NGROK_API_TOKEN} -log stdout --log-level debug ${ngroc_options}${mc_port}"
 echo "PROTO:[${NGROK_PROTOCOL}][${ngroc_proto}]"
+ngrok_cmd="bin/ngrok ${ngroc_proto} -authtoken ${NGROK_API_TOKEN} -log stdout --log-level debug ${ngroc_options}${mc_port}"
 echo "CMD:[${ngrok_cmd}]"
 
 echo "Starting ngrok with protocol [${ngroc_proto}], options [${ngroc_options}], and port [${mc_port}]..."
