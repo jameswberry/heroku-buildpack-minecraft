@@ -9,7 +9,7 @@ echo ""
 mc_port=${MINECRAFT_PORT:-25566}
 port=${1:-${PORT:-8080}}
 
-if [ -z ${NGROK_API_TOKEN} ]; then
+if [ -z "${NGROK_API_TOKEN}" ]; then
   echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!"
   exit 1
 fi
@@ -17,7 +17,7 @@ fi
 # Start the TCP tunnel
 ngroc_proto=${NGROK_PROTOCOL:-"tcp"}
 ngroc_options=""
-if [ -z ${NGROK_OPTS} ]; then
+if [ -z "${NGROK_OPTS}" ]; then
   ngroc_options="${NGROK_OPTS} "
 fi
 
