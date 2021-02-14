@@ -72,8 +72,7 @@ if [ -n "${FORGE_VERSION}" ]; then
   # https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.37/forge-1.16.4-35.1.37-installer.jar
   
   echo -n "-----> Installing Minecraft Forge [${forge_version}] ... "
-  forge_url="https://files.minecraftforge.net/maven/net/minecraftforge/forge/${forge_version}/forge-${forge_version}-installer.jar"
-  curl -o forge-installer.jar -s -L $forge_url
+  curl -o forge-installer.jar -s -L "https://files.minecraftforge.net/maven/net/minecraftforge/forge/${FORGE_VERSION}/forge-${FORGE_VERSION}-installer.jar"
   java -jar forge-installer.jar --installServer
   mv minecraftforge-universal*.jar $BUILD_DIR/minecraft.jar
   rm forge-installer.jar
