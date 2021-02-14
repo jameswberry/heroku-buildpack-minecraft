@@ -41,22 +41,17 @@
       "required": false
     },
     "MINCRAFT_VERSION": {
-      "description": "Optional version number for the Minecraft Server (Defaults to 1.16.1)",
+      "description": "Optional version number for the Minecraft Server (Defaults to 1.16.4)",
       "required": false,
-      "value": "1.16.5"
+      "value": "1.16.4"
     },
     "MINCRAFT_PORT": {
       "description": "Optional port number for the Minecraft Server (Defaults to 25566)",
       "required": false,
       "value": "25566"
     },
-    "MINCRAFT_BUILD": {
-      "description": "Optional build source for Minecraft Server 'vanilla', 'forge' (Defaults to 'vanilla')",
-      "required": false,
-      "value": "vanilla"
-    },
-    "BUILD_VERSION": {
-      "description": "Optional build version Minecraft Server Build (Defaults to 32.0.0)",
+    "FORGE_VERSION": {
+      "description": "Optional FORGE build version REQUIRED for successful forge install (Defaults to 32.0.0)",
       "required": false,
       "value": "32.0.0"
     }
