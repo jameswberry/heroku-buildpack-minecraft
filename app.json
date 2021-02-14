@@ -53,6 +53,9 @@
   },
   "buildpacks": [
     {
+      "url": "https://github.com/velizarn/heroku-buildpack-nano"
+    },
+    {
       "url": "heroku/python"
     },
     {
