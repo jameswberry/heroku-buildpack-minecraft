@@ -67,23 +67,37 @@ curl --silent -o ngrok.zip -L "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable
 unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "done"
 
-# NOTE: Make sure a corresponding URL in versions.csv and update documentation in /opt/index.html
-# NOTE: MINECRAFT_VERSION is also set as a default value in app.json
-minecraft_version=${MINECRAFT_VERSION}
-minecraft_url=""
-# Set the default Minecraft version if the configured version is not available.
-if ! grep -Rq "${minecraft_version}" versions.csv; then
-  minecraft_version="${DEFAULT_MINECRAFT_VERSION}"
-fi
-echo -n "-----> Installing Minecraft [${minecraft_version}] ... "
-# Get the URL for the configured Minecraft version
-if [ $(ver_compare "${minecraft_version}") -gt $(ver_compare "1.13.1") ]; then
-  minecraft_url=$(grep "${minecraft_version}" versions.csv | awk -F, '{print $2}')
+if [ -n "${FORGE_VERSION}" ]; then
+  # FORGE MINECRAFT SERVER INSTALL
+  # https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.4-35.1.37/forge-1.16.4-35.1.37-installer.jar
+  
+  echo -n "-----> Installing Minecraft Forge [${forge_version}] ... "
+  forge_url="https://files.minecraftforge.net/maven/net/minecraftforge/forge/${forge_version}/forge-${forge_version}-installer.jar"
+  curl -o forge-installer.jar -s -L $forge_url
+  java -jar forge-installer.jar --installServer
+  mv minecraftforge-universal*.jar $BUILD_DIR/minecraft.jar
+  rm forge-installer.jar
 else
-  minecraft_url="https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft_version}/minecraft_server.${minecraft_version}.jar"
+  # VANILLA MINECRAFT SERVER INSTALL
+
+  # NOTE: Make sure a corresponding URL in versions.csv and update documentation in /opt/index.html
+  # NOTE: MINECRAFT_VERSION is also set as a default value in app.json
+  minecraft_version=${MINECRAFT_VERSION}
+  minecraft_url=""
+  # Set the default Minecraft version if the configured version is not available.
+  if ! grep -Rq "${minecraft_version}" versions.csv; then
+    minecraft_version="${DEFAULT_MINECRAFT_VERSION}"
+  fi
+  echo -n "-----> Installing Minecraft [${minecraft_version}] ... "
+  # Get the URL for the configured Minecraft version
+  if [ $(ver_compare "${minecraft_version}") -gt $(ver_compare "1.13.1") ]; then
+    minecraft_url=$(grep "${minecraft_version}" versions.csv | awk -F, '{print $2}')
+  else
+    minecraft_url="https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft_version}/minecraft_server.${minecraft_version}.jar"
+  fi
+  curl -o minecraft.jar -s -L $minecraft_url
+  mv minecraft.jar $BUILD_DIR/minecraft.jar
 fi
-curl -o minecraft.jar -s -L $minecraft_url
-mv minecraft.jar $BUILD_DIR/minecraft.jar
 echo "done"
 
 if [ -n "${MINECRAFT_EULA:-""}" ]; then

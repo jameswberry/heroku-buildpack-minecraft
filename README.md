@@ -123,6 +123,8 @@ You can choose the Minecraft version by setting the MINECRAFT_VERSION like so:
 $ heroku config:set MINECRAFT_VERSION="1.16.4"
 ```
 
+### Minecraft Server Configuration
+
 You can also configure the server properties by creating a `server.properties`
 file in your project and adding it to Git. This is how you would set things like
 Creative mode and Hardcore difficulty. The various options available are
@@ -130,6 +132,18 @@ described on the [Minecraft Wiki](http://minecraft.gamepedia.com/Server.properti
 
 You can add files such as `banned-players.json`, `banned-ips.json`, `ops.json`,
 `whitelist.json` to your Git repository and the Minecraft server will pick them up.
+
+### Minecraft Build: Forge
+
+You can choose the Minecraft Forge build by setting the FORGE_VERSION like so:
+
+```
+$ heroku config:set FORGE_VERSION="1.16.4-35.1.37"
+```
+
+**NOTE**: Forge versions MUST include both the Server Version and the Build Version separated by a '-' dash/hyphen.
+
+You can find a list of all available forge versions at the following URL: [http://files.minecraftforge.net/maven/net/minecraftforge/forge/](http://files.minecraftforge.net/maven/net/minecraftforge/forge/)
 
 [//]: # ($ heroku plugins:install buildpack-registry)
 [//]: # ($ heroku buildpacks:register)
