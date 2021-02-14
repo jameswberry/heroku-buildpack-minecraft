@@ -74,8 +74,8 @@ if [ -n "${FORGE_VERSION:-""}" ]; then
   echo -n "-----> Installing Minecraft Forge [${FORGE_VERSION}] ... "
   curl -o forge-installer.jar -s -L "https://files.minecraftforge.net/maven/net/minecraftforge/forge/${FORGE_VERSION}/forge-${FORGE_VERSION}-installer.jar"
   java -jar forge-installer.jar --installServer
-  mv forge-*.jar $BUILD_DIR/minecraft.jar
   rm forge-installer.jar
+  mv forge-${FORGE_VERSION}.jar $BUILD_DIR/minecraft.jar
 else
   # VANILLA MINECRAFT SERVER INSTALL
 
