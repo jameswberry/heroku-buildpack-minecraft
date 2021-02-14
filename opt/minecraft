@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 #########################################
+# NGROC TCP TUNNEL SERVICE
 echo ""
 echo "----------"
 echo ""
@@ -32,6 +33,7 @@ eval "${ngrok_cmd} | tee ngrok.log &"
 ngrok_pid=$!
 
 #########################################
+# AWS S3 SYNC STORAGE
 echo ""
 echo "----------"
 echo ""
@@ -64,6 +66,7 @@ case $limit in
 esac
 
 #########################################
+# MINECRAFT SERVER
 echo ""
 echo "----------"
 echo ""
@@ -73,6 +76,7 @@ eval "screen -L -h 2048 -dmS minecraft java -Xmx${heap} -Xms${heap} -jar minecra
 main_pid=$!
 
 #########################################
+# HEROKU APP STARTUP
 echo ""
 echo "----------"
 echo ""
