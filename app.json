@@ -5,7 +5,7 @@
     "games",
     "minecraft"
   ],
-  "repository": "https://github.com/jkutner/heroku-buildpack-minecraft",
+  "repository": "https://github.com/jameswberry/heroku-buildpack-minecraft",
   "env": {
     "MINECRAFT_EULA": {
       "description": "Do you accept the Minecraft EULA?",
@@ -49,6 +49,16 @@
       "description": "Optional port number for the Minecraft Server (Defaults to 25566)",
       "required": false,
       "value": "25566"
+    },
+    "MINCRAFT_BUILD": {
+      "description": "Optional build source for Minecraft Server 'vanilla', 'forge' (Defaults to 'vanilla')",
+      "required": false,
+      "value": "vanilla"
+    },
+    "BUILD_VERSION": {
+      "description": "Optional build version Minecraft Server Build (Defaults to 32.0.0)",
+      "required": false,
+      "value": "32.0.0"
     }
   },
   "buildpacks": [
